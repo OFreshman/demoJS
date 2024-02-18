@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行顺序</title>
+    <!-- <script src="./js/es01.js"></script> -->
+    <!-- <script src="./js/es02.js"></script> -->
+    <script>
+      // 这种方式会追加到尾部执行
+      // const script = document.createElement('script');
+      // script.src = './js/es02.js';
+      // document.head.appendChild(script);
+
+      // 添加到当前位置执行
+      // document.write('<script src="./js/es02.js"><\/script>')
+    </script>
+    <script src="./js/injectJS.js"></script>
+    <style>
+      body {
+        display: grid;
+        grid-template-areas: "control log";
+      }
+
+      .controls {
+        grid-area: control;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .event-log {
+        grid-area: log;
+      }
+
+      .event-log-contents {
+        resize: none;
+      }
+
+      label,
+      button {
+        display: block;
+      }
+
+      #reload {
+        height: 2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <span>JS执行顺序</span>
+
+    <div class="controls">
+      <button id="reload" type="button">Reload</button>
+    </div>
+
+    <div class="event-log">
+      <label for="eventLog">Event log:</label>
+      <textarea readonly class="event-log-contents" rows="8" cols="30" id="eventLog"></textarea>
+    </div>
+    <!-- <script>
+    const log = document.querySelector(".event-log-contents");
+    const reload = document.querySelector("#reload");
+
+    reload.addEventListener("click", () => {
+      log.textContent = "";
+      setTimeout(() => {
+        window.location.reload(true); // 页面重新加载
+      }, 200);
+    });
+
+    window.addEventListener("load", (event) => {
+      log.textContent += "load\n";
+    });
+
+    document.addEventListener("readystatechange", (event) => {
+      log.textContent += `readystate: ${document.readyState}\n`;
+    });
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+      log.textContent += `DOMContentLoaded\n`;
+    });
+  </script> -->
+    <!-- <script src="./js/es03.js"></script> -->
+  </body>
+
+</html>
